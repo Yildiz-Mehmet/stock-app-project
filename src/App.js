@@ -1,8 +1,9 @@
-import { blueGrey, grey } from "@mui/material/colors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Provider } from "react-redux";
 import AppRouter from "./router/AppRouter";
+import { grey, blueGrey } from "@mui/material/colors";
+import { Provider } from "react-redux";
 import store from "./app/store";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const theme = createTheme({
@@ -15,13 +16,13 @@ function App() {
       },
     },
   });
-
   return (
     <>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <AppRouter />
         </Provider>
+        <ToastContainer />
       </ThemeProvider>
     </>
   );

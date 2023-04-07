@@ -22,9 +22,9 @@ const icons = [
     url: "/stock/",
   },
   {
-    title: "Purchase",
+    title: "Purchases",
     icon: <ShoppingCartIcon />,
-    url: "/stock/purchase/",
+    url: "/stock/purchases/",
   },
   {
     title: "Sales",

@@ -108,7 +108,7 @@ function Dashboard(props) {
           {drawer}
         </Drawer>
       </Box>
-      {/* <Box
+      <Box
         component="main"
         sx={{
           flexGrow: 1,
@@ -117,8 +117,9 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-      </Box> */}
-      <Outlet />
+
+        <Outlet />
+      </Box>
     </Box>
   );
 }

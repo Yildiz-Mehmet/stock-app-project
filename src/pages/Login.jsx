@@ -7,10 +7,8 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/result.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Formik, Form } from "formik";
-import TextField from "@mui/material/TextField";
-import { object, string } from "yup";
-import LoadingButton from "@mui/lab/LoadingButton";
+import { Formik } from "formik";
+
 import useAuthCall from "../hooks/useAuthCall";
 import LoginForm, { loginScheme } from "../components/LoginForm";
 

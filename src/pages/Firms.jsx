@@ -3,6 +3,8 @@ import useStockCall from "../hooks/useStockCall";
 
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import FirmCard from "../components/FirmCard";
+import { flex } from "../styles/globalStyle";
 
 const Firms = () => {
   // const { token } = useSelector((state) => state.auth);
@@ -34,9 +36,11 @@ const Firms = () => {
       </Typography>
       <Button variant="contained">New Firm</Button>
 
-      <Grid container>
+      <Grid container sx={flex}>
         {firms?.map((firm) => (
-          <Grid item></Grid>
+          <Grid item key={firm.id}>
+            <FirmCard firm={firm} />
+          </Grid>
         ))}
       </Grid>
     </div>

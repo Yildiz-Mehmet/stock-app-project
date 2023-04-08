@@ -1,7 +1,16 @@
-import React from "react";
+import { useSelect } from "@mui/base";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const useAxios = () => {
-  return <div>useAxios</div>;
+  const { token } = useSelector((state) => state.auth);
+
+  const axiosWithToken = axios.create({
+    baseURL: "http://12130.fullstack.clarusway.com/",
+
+    headers: { Authorization: `Token ${token}` },
+  });
+  return { axiosWithToken };
 };
 
 export default useAxios;

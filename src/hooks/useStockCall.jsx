@@ -1,7 +1,10 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { fetchStart, getSuccess, fetchFail } from "../features/stockSlice";
 
 const useStockCall = () => {
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const getStockData = async (url) => {
     const BASE_URL = "http://12130.fullstack.clarusway.com/";
     dispatch(fetchStart());
@@ -16,8 +19,22 @@ const useStockCall = () => {
       dispatch(fetchFail());
     }
   };
+  const deleteStockData = async (url, id) => {
+    const BASE_URL = "http://12130.fullstack.clarusway.com/";
+    dispatch(fetchStart());
 
-  return { getStockData };
+    try {
+      await axios.delete(`${BASE_URL}stock/${url}/${id}/`, {
+        headers: { Authorization: `Token ${token}` },
+      });
+      getStockData(url);
+    } catch (error) {
+      console.log("error");
+      dispatch(fetchFail());
+    }
+  };
+
+  return { getStockData, deleteStockData };
 };
 
 export default useStockCall;

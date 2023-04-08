@@ -1,12 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const useStockCall = () => {
-  const getFirms = async () => {
+  const getStockData = async (url) => {
     const BASE_URL = "http://12130.fullstack.clarusway.com/";
     dispatch(fetchStart());
-    const url = "firms";
+
     try {
-      const { data } = await axios(`${BASE_URL}stock/firms/`, {
+      const { data } = await axios(`${BASE_URL}stock/${url}/`, {
         headers: { Authorization: `Token ${token}` },
       });
       dispatch(getSuccess({ data, url }));
@@ -15,21 +16,8 @@ const useStockCall = () => {
       dispatch(fetchFail());
     }
   };
-  const getSales = async () => {
-    const BASE_URL = "http://12130.fullstack.clarusway.com/";
-    dispatch(fetchStart());
-    const url = "sales";
-    try {
-      const { data } = await axios(`${BASE_URL}stock/sales/`, {
-        headers: { Authorization: `Token ${token}` },
-      });
-      dispatch(getSuccess({ data, url }));
-    } catch (error) {
-      console.log("error");
-      dispatch(fetchFail());
-    }
-  };
-  return <div>useStockCall</div>;
+
+  return { getStockData };
 };
 
 export default useStockCall;

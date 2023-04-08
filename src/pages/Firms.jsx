@@ -15,7 +15,7 @@ const Firms = () => {
     dispatch(fetchStart());
     const url = "firms";
     try {
-      const { data } = await axios(`${BASE_URL}/stock/firms/`, {
+      const { data } = await axios(`${BASE_URL}stock/firms/`, {
         headers: { Authorization: `Token ${token}` },
       });
       dispatch(getSuccess({ data, url }));

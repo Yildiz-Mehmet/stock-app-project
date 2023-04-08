@@ -1,7 +1,8 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import useStockCall from "../hooks/useStockCall";
 
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Firms = () => {
   // const { token } = useSelector((state) => state.auth);
@@ -21,6 +22,7 @@ const Firms = () => {
   //   }
   // };
   const { getStockData } = useStockCall();
+  const { firms } = useSelector((state) => state.stock);
   useEffect(() => {
     getStockData("firms");
   }, []);
@@ -31,6 +33,12 @@ const Firms = () => {
         Firm
       </Typography>
       <Button variant="contained">New Firm</Button>
+
+      <Grid container>
+        {firms?.map((firm) => (
+          <Grid item></Grid>
+        ))}
+      </Grid>
     </div>
   );
 };

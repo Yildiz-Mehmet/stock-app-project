@@ -12,11 +12,13 @@ const authSlice = createSlice({
   },
   reducers: {
     fetchStart: (state) => {
-      (state.loading = true), (state.error = false);
+      state.loading = true;
+      state.error = false;
     },
     loginSuccess: (state, { payload }) => {
-      (state.loading = false), (state.currentUser = payload?.user?.username),
-      
+      state.loading = false;
+      state.currentUser = payload?.user?.username;
+      state.isAdmin = payload?.user?.is_superuser;
     },
   },
 });

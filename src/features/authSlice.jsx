@@ -19,6 +19,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.currentUser = payload?.user?.username;
       state.isAdmin = payload?.user?.is_superuser;
+      state.token = payload?.key;
     },
   },
 });

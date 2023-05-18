@@ -54,6 +54,7 @@ const useAuthCall = () => {
         `${BASE_URL}account/register/`,
         userInfo
       );
+      console.log(data);
       dispatch(registerSuccess(data));
       toastSuccessNotify("Register performed");
       navigate("/stock");
